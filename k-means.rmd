@@ -363,3 +363,23 @@ legend("top", legend = c("Withinss", "Betweenss"),
 library(factoextra)
 fviz_nbclust(x = ATIBAIA_drivers_num_z,FUNcluster = kmeans, method = 'wss' )
 ```
+
+
+#-------------------------------------------------------------------------
+# Plot dos Clusters
+
+
+```{r}
+# Carregar pacote fpc (Flexible Procedures for Clustering), que possui uma série de funções para análise de clusters.
+library(fpc)
+# Utilizar a função plotcluster do pacote fpc, que imprime o gráfico espacial nas duas componentes principais mais relevantes.
+plotcluster(ATIBAIA_drivers_num_z, KMeans_clustering_k3$cluster)
+# Nota-se que os grupos estão bem separados, o que é um bom sinal.
+```
+
+```{r}
+#install.packages("factoextra")
+library(factoextra)
+fviz_cluster(list(data = ATIBAIA_drivers_num_z, cluster = KMeans_clustering_k3$cluster),  show.clust.cent = T)
+
+```
